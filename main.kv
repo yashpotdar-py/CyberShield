@@ -1,0 +1,153 @@
+#:kivy 2.0.0
+<DrawerClickableItem@MDNavigationDrawerItem>
+    focus_color: "#e7e4c0"
+    unfocus_color: "#fffcf4"
+
+
+MDScreen:
+
+    MDNavigationLayout:
+
+        ScreenManager:
+
+            MDScreen:
+
+                MDBoxLayout:
+                    orientation: "vertical"
+
+                    MDBoxLayout:
+                        adaptive_height: True
+                        md_bg_color: "#fffcf4"
+                        padding: "12dp"
+
+                        MDLabel:
+                            text: "CyberShield"
+                            adaptive_height: True
+                            pos_hint: {"center_y": .5}
+
+                    MDBoxLayout:
+
+                        MDNavigationRail:
+                            id: navigation_rail
+                            md_bg_color: "#fffcf4"
+                            selected_color_background: "#e7e4c0"
+                            ripple_color_item: "#e7e4c0"
+
+                            MDNavigationRailMenuButton:
+                                on_release: nav_drawer.set_state("open")
+
+                            MDNavigationRailItem:
+                                text: "Home"
+                                icon: "home"
+                                on_release:
+                                    screen_manager.current = "main_window"
+
+                            MDNavigationRailItem:
+                                text: "Antivirus"
+                                icon: "shield-bug"
+                                on_release:
+                                    screen_manager.current = "antivirus"
+
+                            MDNavigationRailItem:
+                                text: "Passwords"
+                                icon: "key"
+                                on_release:
+                                    screen_manager.current = "password"
+
+                            MDNavigationRailItem:
+                                text: "VPN"
+                                icon: "vpn"
+                                on_release:
+                                    screen_manager.current = "vpn"
+
+                            MDNavigationRailItem:
+                                text: "settings"
+                                icon: "cog"
+                                on_release:
+                                    screen_manager.current = "settings"
+
+                        ScreenManager:
+                            id: screen_manager
+
+                            Screen:
+                                name: "main_window"
+                                MDLabel:
+                                    text:"Hello"
+                                    halign:"center"
+
+                            Screen:
+                                name: "settings"
+                                MDLabel:
+                                    text:"Settings"
+                                    halign:"center"
+
+                            Screen:
+                                name: "antivirus"
+                                MDLabel:
+                                    text:"Antivirus"
+                                    halign:"center"
+
+                            Screen:
+                                name: "password"
+                                MDLabel:
+                                    text:"Passwords"
+                                    halign:"center"
+
+                            Screen:
+                                name: "vpn"
+                                MDLabel:
+                                    text:"VPN"
+                                    halign:"center"
+
+    MDNavigationDrawer:
+        id: nav_drawer
+        radius: 0, 16, 16, 0
+        md_bg_color: "#fffcf4"
+        elevation: 2
+        width: "240dp"
+
+        MDNavigationDrawerMenu:
+
+            MDBoxLayout:
+                orientation: "vertical"
+                adaptive_height: True
+                spacing: "12dp"
+                padding: 0, 0, 0, "12dp"
+
+                MDIconButton:
+                    icon: "arrow-left"
+                    on_release: nav_drawer.set_state("close")
+
+                MDBoxLayout:
+                    adaptive_height: True
+                    padding: "12dp", 0, 0, 0
+
+            DrawerClickableItem:
+                text: "Home"
+                icon: "home"
+                on_release:
+                    screen_manager.current = "main_window"
+
+            DrawerClickableItem:
+                text: "Antivirus"
+                icon: "shield-bug"
+                on_release:
+                    screen_manager.current = "antivirus"
+
+            DrawerClickableItem:
+                text: "Passwords"
+                icon: "key"
+                on_release:
+                    screen_manager.current = "password"
+
+            DrawerClickableItem:
+                text: "VPN"
+                icon: "vpn"
+                on_release:
+                    screen_manager.current = "vpn"
+
+            DrawerClickableItem:
+                text: "Settings"
+                icon: "cog"
+                on_release:
+                    screen_manager.current = "settings"
