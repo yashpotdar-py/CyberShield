@@ -92,7 +92,31 @@ MDScreen:
                                 MDLabel:
                                     text:"Passwords"
                                     halign:"center"
-
+                                MDBoxLayout:
+                                    orientation: 'vertical'
+                                    MDTextField:
+                                        id: username
+                                        multiline:False
+                                        hint_text: "Enter Username"
+                                        size_hint_x:0.5
+                                        icon_left: "account"
+                                    MDTextField:
+                                        id: passwords
+                                        multiline:False
+                                        hint_text: "Enter Password"
+                                        size_hint_x: 0.5
+                                        password: True
+                                        icon_left: "key-variant"
+                                    MDIconButton:
+                                        icon: "eye-off"
+                                        text:"Show Password"
+                                        pos_hint: {"center_y": 0.5}
+                                        pos: passwords.width - self.width + dp(8),0
+                                        theme_text_color: "Hint"
+                                        on_release:
+                                            self.icon = "eye" if self.icon == "eye-off" else "eye-off"
+                                            passwords.password = False if passwords.password is True \
+                                            else True
                             Screen:
                                 name: "vpn"
                                 MDLabel:
