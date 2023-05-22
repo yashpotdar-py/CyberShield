@@ -89,17 +89,19 @@ MDScreen:
 
                             Screen:
                                 name: "password"
-                                MDLabel:
-                                    text:"Passwords"
-                                    halign:"center"
-                                MDBoxLayout:
-                                    orientation: 'vertical'
+                                MDGridLayout:
+                                    rows:2
+                                    cols:2
                                     MDTextField:
                                         id: username
                                         multiline:False
                                         hint_text: "Enter Username"
                                         size_hint_x:0.5
-                                        icon_left: "account"
+                                        icon_left: "account-circle-outline"
+                                    MDIconButton:
+                                        id:pencil
+                                        icon:"pencil"
+                                        theme_text_color:"Hint"
                                     MDTextField:
                                         id: passwords
                                         multiline:False
@@ -117,6 +119,12 @@ MDScreen:
                                             self.icon = "eye" if self.icon == "eye-off" else "eye-off"
                                             passwords.password = False if passwords.password is True \
                                             else True
+                                MDFillRoundFlatButton:
+                                    id:submit
+                                    text:"Submit"
+                                    pos_hint: {"center_x":.5, "center_y":.70}
+                                    font_size: "20dp"
+
                             Screen:
                                 name: "vpn"
                                 MDLabel:
