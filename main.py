@@ -3,6 +3,11 @@ from kivy.lang import Builder
 
 
 class CyberShieldApp(MDApp):
+
+    data = {
+        "Application" : "android",
+        "Website" : "web"
+    }
     def build(self):
         return Builder.load_file("main.kv")
 
