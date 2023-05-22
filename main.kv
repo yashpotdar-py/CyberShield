@@ -7,11 +7,8 @@
 MDScreen:
 
     MDNavigationLayout:
-
         ScreenManager:
-
             MDScreen:
-
                 MDBoxLayout:
                     orientation: "vertical"
 
@@ -52,7 +49,7 @@ MDScreen:
                                 text: "Passwords"
                                 icon: "key"
                                 on_release:
-                                    screen_manager.current = "password"
+                                    screen_manager.current = "passwordmanager"
 
                             MDNavigationRailItem:
                                 text: "VPN"
@@ -61,7 +58,7 @@ MDScreen:
                                     screen_manager.current = "vpn"
 
                             MDNavigationRailItem:
-                                text: "settings"
+                                text: "Settings"
                                 icon: "cog"
                                 on_release:
                                     screen_manager.current = "settings"
@@ -88,7 +85,7 @@ MDScreen:
                                     halign:"center"
 
                             Screen:
-                                name: "password"
+                                name: "passwordmanager"
                                 MDGridLayout:
                                     rows:3
                                     cols:2
@@ -112,7 +109,7 @@ MDScreen:
                                         icon:"pencil"
                                         theme_text_color:"Hint"
                                     MDTextField:
-                                        id: passwords
+                                        id: password
                                         multiline:False
                                         hint_text: "Enter Password"
                                         size_hint_x: 0.5
@@ -131,6 +128,8 @@ MDScreen:
                                     id: submit
                                     text:"Submit"
                                     pos_hint: {"center_x":.5, "center_y":.5}
+                                    on_release:
+                                        app.login_data()
                             Screen:
                                 name: "vpn"
                                 MDLabel:
@@ -176,7 +175,7 @@ MDScreen:
                 text: "Passwords"
                 icon: "key"
                 on_release:
-                    screen_manager.current = "password"
+                    screen_manager.current = "passwordmanager"
 
             DrawerClickableItem:
                 text: "VPN"
