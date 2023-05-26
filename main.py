@@ -5,17 +5,25 @@ from kivy.config import Config
 from kivymd.uix.pickers import MDDatePicker
 Config.set('input', 'mouse', 'mouse,multitouch_on_demand')
 
+
 class CyberShieldApp(MDApp):
-    screen_manager  = ObjectProperty(None)
+    screen_manager = ObjectProperty(None)
+
     def build(self):
         self.screen = Builder.load_file("main.kv")
         return self.screen
-    
+
+    def on_save(self, instance, value, date_range):
+        print(instance, value, date_range)
+
+    def on_cancel(self, instance, value):
+        pass
+
     def show_date_picker(self):
         date_dialog = MDDatePicker()
-        date_dialog.bind(on_pause=self.on_pause)
+        date_dialog.bind(on_save=self.on_save, on_cancel=self.on_cancel)
         date_dialog.open()
-    
+
     def login_data(self):
         website = self.screen.screen_manager.passwordmanager.website.text
         username = self.screen.screen_manager.passwordmanager.username.text
