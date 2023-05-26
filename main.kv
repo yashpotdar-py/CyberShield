@@ -71,9 +71,28 @@ MDScreen:
                             Screen:
                                 id: settings
                                 name: "settings"
-                                MDLabel:
-                                    text:"Settings"
-                                    halign:"center"
+                                MDBoxLayout:
+                                    rows:2
+                                    cols:2
+                                    MDLabel:
+                                        text: "Switch To Dark Theme"
+                                        halign: 'center'
+                                        pos_hint: {"center_x":.5,"center_y":.5}
+                                        md_bg_color: "red"
+                                    MDSwitch:
+                                        id: theme_switcher
+                                        pos_hint: {"center_x":0.5,"center_y":0.5}
+                                        halign: 'center'
+                                    MDLabel:
+                                        text: "Date Picker"
+                                        halign: 'center'
+                                        pos_hint: {"center_x":.5, "center_y":.5}
+                                        md_bg_color:"green"
+                                    MDRaisedButton:
+                                        text: "Select Date"
+                                        pos_hint: {"center_x":.5, "center_y":.5}
+                                        on_release:
+                                            app.show_date_picker()
                             Screen:
                                 id: antivirus
                                 name: "antivirus"
