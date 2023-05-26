@@ -11,52 +11,42 @@ MDScreen:
             MDScreen:
                 MDBoxLayout:
                     orientation: "vertical"
-
                     MDBoxLayout:
                         adaptive_height: True
                         md_bg_color: "#fffcf4"
                         padding: "12dp"
-
                         MDLabel:
                             text: "CyberShield"
                             adaptive_height: True
                             pos_hint: {"center_y": .5}
-
                     MDBoxLayout:
-
                         MDNavigationRail:
                             id: navigation_rail
                             md_bg_color: "#fffcf4"
                             selected_color_background: "#e7e4c0"
                             ripple_color_item: "#e7e4c0"
-
                             MDNavigationRailMenuButton:
                                 on_release: nav_drawer.set_state("open")
-
                             MDNavigationRailItem:
                                 text: "Home"
                                 icon: "home"
                                 on_release:
                                     screen_manager.current = "main_window"
-
                             MDNavigationRailItem:
                                 text: "Antivirus"
                                 icon: "shield-bug"
                                 on_release:
                                     screen_manager.current = "antivirus"
-
                             MDNavigationRailItem:
                                 text: "Passwords"
                                 icon: "key"
                                 on_release:
                                     screen_manager.current = "passwordmanager"
-
                             MDNavigationRailItem:
                                 text: "VPN"
                                 icon: "vpn"
                                 on_release:
                                     screen_manager.current = "vpn"
-
                             MDNavigationRailItem:
                                 text: "Settings"
                                 icon: "cog"
@@ -65,27 +55,45 @@ MDScreen:
 
                         ScreenManager:
                             id: screen_manager
+                            main_window: main_window
+                            settings: settings
+                            antivirus: antivirus
+                            passwordmanager: passwordmanager
+                            vpn: vpn
 
                             Screen:
+                                id: main_window
                                 name: "main_window"
                                 MDLabel:
                                     text:"Hello"
                                     halign:"center"
 
                             Screen:
+                                id: settings
                                 name: "settings"
                                 MDLabel:
                                     text:"Settings"
                                     halign:"center"
+                                
 
                             Screen:
+                                id: antivirus
                                 name: "antivirus"
                                 MDLabel:
                                     text:"Antivirus"
                                     halign:"center"
 
                             Screen:
+                                id: passwordmanager
                                 name: "passwordmanager"
+                                website: website
+                                load: load
+                                username: username
+                                pencil: pencil
+                                passwords: passwords
+                                showpassword: showpassword
+                                submit: submit
+
                                 MDGridLayout:
                                     rows:3
                                     cols:2
@@ -109,13 +117,14 @@ MDScreen:
                                         icon:"pencil"
                                         theme_text_color:"Hint"
                                     MDTextField:
-                                        id: password
+                                        id: passwords
                                         multiline:False
                                         hint_text: "Enter Password"
                                         size_hint_x: 0.5
                                         password: True
                                         icon_left: "key-variant"
                                     MDIconButton:
+                                        id: showpassword
                                         icon: "eye-off"
                                         text:"Show Password"
                                         pos_hint: {"center_y": 0.5}
@@ -131,6 +140,7 @@ MDScreen:
                                     on_release:
                                         app.login_data()
                             Screen:
+                                id: vpn
                                 name: "vpn"
                                 MDLabel:
                                     text:"VPN"
