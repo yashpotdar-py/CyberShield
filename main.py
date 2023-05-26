@@ -1,6 +1,8 @@
 from kivymd.app import MDApp
 from kivy.lang import Builder
 from kivy.properties import ObjectProperty
+from kivy.config import Config
+Config.set('input', 'mouse', 'mouse,multitouch_on_demand')
 
 class CyberShieldApp(MDApp):
     screen_manager  = ObjectProperty(None)
