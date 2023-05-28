@@ -25,9 +25,10 @@ class CyberShieldApp(MDApp):
         date_dialog.open()
 
     def login_data(self):
-        website = self.screen.screen_manager.passwordmanager.website.text
-        username = self.screen.screen_manager.passwordmanager.username.text
-        password = self.screen.screen_manager.passwordmanager.password.text
+        login = self.root.ids.screen_manager.get_screen("passwordmanager")
+        website = login.website.text
+        username = login.username.text
+        password = login.passwords.text
 
         print(website)
         print(username)
