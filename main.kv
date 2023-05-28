@@ -110,52 +110,55 @@ MDScreen:
                                 passwords: passwords
                                 showpassword: showpassword
                                 submit: submit
-
-                                MDGridLayout:
-                                    rows:3
-                                    cols:2
-                                    MDTextField:
-                                        id: website
-                                        multiline:False
-                                        hint_text:"Enter Website"
-                                        size_hint_x:0.5
-                                        icon_left:"web"
-                                    MDIconButton:
-                                        id: load
-                                        icon: "plus-box-multiple-outline"
-                                    MDTextField:
-                                        id: username
-                                        multiline:False
-                                        hint_text: "Enter Username"
-                                        size_hint_x:0.5
-                                        icon_left: "account-circle-outline"
-                                    MDIconButton:
-                                        id:pencil
-                                        icon:"pencil"
-                                        theme_text_color:"Hint"
-                                    MDTextField:
-                                        id: passwords
-                                        multiline:False
-                                        hint_text: "Enter Password"
-                                        size_hint_x: 0.5
-                                        password: True
-                                        icon_left: "key-variant"
-                                    MDIconButton:
-                                        id: showpassword
-                                        icon: "eye-off"
-                                        text:"Show Password"
-                                        pos_hint: {"center_y": 0.5}
-                                        theme_text_color: "Hint"
+                                MDBoxLayout:
+                                    orientation: "vertical"
+                                    spacing: 10
+                                    padding: 10
+                                    MDGridLayout:
+                                        rows:3
+                                        cols:2
+                                        MDTextField:
+                                            id: website
+                                            multiline:False
+                                            hint_text:"Enter Website"
+                                            size_hint_x:0.5
+                                            icon_left:"web"
+                                        MDIconButton:
+                                            id: load
+                                            icon: "plus-box-multiple-outline"
+                                        MDTextField:
+                                            id: username
+                                            multiline:False
+                                            hint_text: "Enter Username"
+                                            size_hint_x:0.5
+                                            icon_left: "account-circle-outline"
+                                        MDIconButton:
+                                            id:pencil
+                                            icon:"pencil"
+                                            theme_text_color:"Hint"
+                                        MDTextField:
+                                            id: passwords
+                                            multiline:False
+                                            hint_text: "Enter Password"
+                                            size_hint_x: 0.5
+                                            password: True
+                                            icon_left: "key-variant"
+                                        MDIconButton:
+                                            id: showpassword
+                                            icon: "eye-off"
+                                            text:"Show Password"
+                                            pos_hint: {"center_y": 0.5}
+                                            theme_text_color: "Hint"
+                                            on_release:
+                                                self.icon = "eye" if self.icon == "eye-off" else "eye-off"
+                                                passwords.password = False if passwords.password is True \
+                                                else True
+                                    MDFillRoundFlatButton:
+                                        id: submit
+                                        text:"Submit"
+                                        pos_hint_y: .5
                                         on_release:
-                                            self.icon = "eye" if self.icon == "eye-off" else "eye-off"
-                                            passwords.password = False if passwords.password is True \
-                                            else True
-                                MDFillRoundFlatButton:
-                                    id: submit
-                                    text:"Submit"
-                                    pos_hint: {"center_x":.5, "center_y":.5}
-                                    on_release:
-                                        app.login_data()
+                                            app.login_data()
                             Screen:
                                 id: vpn
                                 name: "vpn"
