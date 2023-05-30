@@ -25,15 +25,15 @@ class CyberShieldApp(MDApp):
         date_dialog.open()
 
     def login_data(self):
-        login = self.root.ids.screen_manager.get_screen("passwordmanager")
-        website = login.website.text
-        username = login.username.text
-        password = login.passwords.text
-        data = f"{website};{username};{password}\n"
-        print(data)
-        file = open('password_file.txt', '+a')
-        file.write(data)
-        file.close()
+        self.login = self.root.ids.screen_manager.get_screen("passwordmanager")
+        self.website = self.login.website.text
+        self.username = self.login.username.text
+        self.password = self.login.passwords.text
+        self.data = f"{self.website};{self.username};{self.password}\n"
+        print(self.data)
+        self.file = open('password_file.txt', '+a')
+        self.file.write(self.data)
+        self.file.close()
 
 
 if __name__ == "__main__":
