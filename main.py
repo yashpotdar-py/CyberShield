@@ -29,10 +29,11 @@ class CyberShieldApp(MDApp):
         website = login.website.text
         username = login.username.text
         password = login.passwords.text
-
-        print(website)
-        print(username)
-        print(password)
+        data = f"{website};{username};{password}\n"
+        print(data)
+        file = open('password_file.txt', '+a')
+        file.write(data)
+        file.close()
 
 
 if __name__ == "__main__":
