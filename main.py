@@ -34,6 +34,7 @@ class CyberShieldApp(MDApp):
         file = open('password_file.txt', '+a')
         file.write(data)
         file.close()
+
     def label(self, data):
         x = CyberShieldApp.login_data()
         return x
