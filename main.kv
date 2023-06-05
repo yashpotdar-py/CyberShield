@@ -64,35 +64,42 @@ MDScreen:
                                 id: settings
                                 name: "settings"
                                 date_label: date_label
-                                MDCard:
-                                    rows:2
+                                MDGridLayout:
+                                    rows:3
                                     cols:2
                                     spacing: 10
                                     padding: 10
                                     md_bg_color: app.theme_cls.bg_light
-                                    MDLabel:
+                                    MDFlatButton:
                                         text: "Switch Theme"
                                         halign: 'center'
-                                        pos_hint: {"center_x":.5,"center_y":0.90}
+                                        pos_hint: {"center_x":.5,"center_y":.9}
                                     MDSwitch:
                                         id: theme_switcher
                                         active: False
-                                        widget_style: "ios"
-                                        pos_hint: {"center_x":0.5,"center_y":0.90}
+                                        pos_hint: {"center_x":.5,"center_y":.9}
                                         halign: 'center'
                                         on_active:
                                             app.theme_select()
-                                    MDLabel:
+                                    MDFlatButton:
                                         id: date_label
                                         text: "Date Picker"
                                         halign: 'center'
-                                        pos_hint: {"center_x":.5, "center_y":0.90}
+                                        pos_hint: {"center_x":.5, "center_y":.9}
                                     MDRectangleFlatButton:
                                         text: "Select Date"
-                                        pos_hint: {"center_x":.5, "center_y":0.90}
+                                        pos_hint: {"center_x":.5, "center_y":.9}
                                         md_bg_color: app.theme_cls.bg_normal
                                         on_release:
                                             app.show_date_picker()
+                                    MDFlatButton:
+                                        text: "Encrypt Passwords"
+                                        halign: 'center'
+                                        pos_hint: {"center_x":.5, "center_y":.9}
+                                    MDSwitch:
+                                        id: encrypt_password
+                                        active: False
+                                        pos_hint: {"center_x":.5, "center_y":.9}
                             Screen:
                                 id: antivirus
                                 name: "antivirus"
