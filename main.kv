@@ -15,6 +15,7 @@ MDScreen:
                     MDBoxLayout:
                         MDNavigationRail:
                             id: navigation_rail
+                            md_bg_color: app.theme_cls.bg_normal
                             MDNavigationRailMenuButton:
                                 on_release: nav_drawer.set_state("open")
                             MDNavigationRailItem:
@@ -68,11 +69,13 @@ MDScreen:
                                     spacing: 10
                                     padding: 10
                                     MDLabel:
-                                        text: "Switch To Themes"
+                                        text: "Switch Theme"
                                         halign: 'center'
                                         pos_hint: {"center_x":.5,"center_y":0.90}
                                     MDSwitch:
                                         id: theme_switcher
+                                        active: False
+                                        widget_style: "ios"
                                         pos_hint: {"center_x":0.5,"center_y":0.90}
                                         halign: 'center'
                                         on_active:
@@ -85,6 +88,7 @@ MDScreen:
                                     MDRectangleFlatButton:
                                         text: "Select Date"
                                         pos_hint: {"center_x":.5, "center_y":0.90}
+                                        md_bg_color: app.theme_cls.bg_normal
                                         on_release:
                                             app.show_date_picker()
                             Screen:
