@@ -16,7 +16,7 @@ MDScreen:
                     MDBoxLayout:
                         MDNavigationRail:
                             id: navigation_rail
-                            md_bg_color: app.theme_cls.bg_normal
+                            md_bg_color: app.theme_cls.bg_light
                             MDNavigationRailMenuButton:
                                 on_release: nav_drawer.set_state("open")
                             MDNavigationRailItem:
@@ -64,11 +64,12 @@ MDScreen:
                                 id: settings
                                 name: "settings"
                                 date_label: date_label
-                                MDBoxLayout:
+                                MDCard:
                                     rows:2
                                     cols:2
                                     spacing: 10
                                     padding: 10
+                                    md_bg_color: app.theme_cls.bg_light
                                     MDLabel:
                                         text: "Switch Theme"
                                         halign: 'center'
