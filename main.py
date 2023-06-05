@@ -14,10 +14,16 @@ class CyberShieldApp(MDApp):
         return self.screen
 
     def on_save(self, instance, value, date_range):
+        date_selection = self.root.ids.screen_manager.get_screen("settings")
+        date_label = date_selection.date_label.text
+        date_selection.date_label.text = f"{value}"
         print(instance, value, date_range)
 
     def on_cancel(self, instance, value):
-        pass
+        cancel = self.root.ids.screen_manager.get_screen("settings")
+        date_label = cancel.date_label.text
+        cancel.date_label.text = "Select Date"
+        print(date_label)
 
     def show_date_picker(self):
         date_dialog = MDDatePicker()

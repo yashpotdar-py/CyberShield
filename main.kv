@@ -71,26 +71,28 @@ MDScreen:
                             Screen:
                                 id: settings
                                 name: "settings"
+                                date_label: date_label
                                 MDBoxLayout:
                                     rows:2
                                     cols:2
+                                    spacing: 10
+                                    padding: 10
                                     MDLabel:
                                         text: "Switch To Dark Theme"
                                         halign: 'center'
-                                        pos_hint: {"center_x":.5,"center_y":.5}
-                                        md_bg_color: "red"
+                                        pos_hint: {"center_x":.5,"center_y":0.90}
                                     MDSwitch:
                                         id: theme_switcher
-                                        pos_hint: {"center_x":0.5,"center_y":0.5}
+                                        pos_hint: {"center_x":0.5,"center_y":0.90}
                                         halign: 'center'
                                     MDLabel:
+                                        id: date_label
                                         text: "Date Picker"
                                         halign: 'center'
-                                        pos_hint: {"center_x":.5, "center_y":.5}
-                                        md_bg_color:"green"
-                                    MDRaisedButton:
+                                        pos_hint: {"center_x":.5, "center_y":0.90}
+                                    MDRectangleFlatButton:
                                         text: "Select Date"
-                                        pos_hint: {"center_x":.5, "center_y":.5}
+                                        pos_hint: {"center_x":.5, "center_y":0.90}
                                         on_release:
                                             app.show_date_picker()
                             Screen:
