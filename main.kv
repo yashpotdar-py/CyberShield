@@ -1,11 +1,5 @@
 #:kivy 2.0.0
-<DrawerClickableItem@MDNavigationDrawerItem>
-    focus_color: "#e7e4c0"
-    unfocus_color: "#fffcf4"
-
-
 MDScreen:
-
     MDNavigationLayout:
         ScreenManager:
             MDScreen:
@@ -13,7 +7,6 @@ MDScreen:
                     orientation: "vertical"
                     MDBoxLayout:
                         adaptive_height: True
-                        md_bg_color: "#fffcf4"
                         padding: "12dp"
                         MDLabel:
                             text: "CyberShield"
@@ -22,9 +15,6 @@ MDScreen:
                     MDBoxLayout:
                         MDNavigationRail:
                             id: navigation_rail
-                            md_bg_color: "#fffcf4"
-                            selected_color_background: "#e7e4c0"
-                            ripple_color_item: "#e7e4c0"
                             MDNavigationRailMenuButton:
                                 on_release: nav_drawer.set_state("open")
                             MDNavigationRailItem:
@@ -78,13 +68,15 @@ MDScreen:
                                     spacing: 10
                                     padding: 10
                                     MDLabel:
-                                        text: "Switch To Dark Theme"
+                                        text: "Switch To Themes"
                                         halign: 'center'
                                         pos_hint: {"center_x":.5,"center_y":0.90}
                                     MDSwitch:
                                         id: theme_switcher
                                         pos_hint: {"center_x":0.5,"center_y":0.90}
                                         halign: 'center'
+                                        on_active:
+                                            app.theme_select()
                                     MDLabel:
                                         id: date_label
                                         text: "Date Picker"
@@ -175,7 +167,6 @@ MDScreen:
     MDNavigationDrawer:
         id: nav_drawer
         radius: 0, 16, 16, 0
-        md_bg_color: "#fffcf4"
         elevation: 2
         width: "240dp"
 
@@ -195,31 +186,31 @@ MDScreen:
                     adaptive_height: True
                     padding: "12dp", 0, 0, 0
 
-            DrawerClickableItem:
+            MDNavigationDrawerItem:
                 text: "Home"
                 icon: "home"
                 on_release:
                     screen_manager.current = "main_window"
 
-            DrawerClickableItem:
+            MDNavigationDrawerItem:
                 text: "Antivirus"
                 icon: "shield-bug"
                 on_release:
                     screen_manager.current = "antivirus"
 
-            DrawerClickableItem:
+            MDNavigationDrawerItem:
                 text: "Passwords"
                 icon: "key"
                 on_release:
                     screen_manager.current = "passwordmanager"
 
-            DrawerClickableItem:
+            MDNavigationDrawerItem:
                 text: "VPN"
                 icon: "vpn"
                 on_release:
                     screen_manager.current = "vpn"
 
-            DrawerClickableItem:
+            MDNavigationDrawerItem:
                 text: "Settings"
                 icon: "cog"
                 on_release:

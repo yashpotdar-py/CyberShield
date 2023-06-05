@@ -10,9 +10,19 @@ class CyberShieldApp(MDApp):
     screen_manager = ObjectProperty(None)
 
     def build(self):
+        self.theme_cls.theme_style_switch_animation = True
+        self.theme_cls.theme_style = "Light"
+        self.theme_cls.primary_palette = "Blue"
         self.screen = Builder.load_file("main.kv")
         return self.screen
-
+    
+    def theme_select(self):
+        self.theme_cls.primary_palette = (
+            "Purple" if self.theme_cls.primary_palette == "Blue" else "Blue"
+        )
+        self.theme_cls.theme_style = (
+            "Dark" if self.theme_cls.theme_style == "Light" else "Light"
+        )
     def on_save(self, instance, value, date_range):
         date_selection = self.root.ids.screen_manager.get_screen("settings")
         date_label = date_selection.date_label.text
