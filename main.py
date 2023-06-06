@@ -17,14 +17,16 @@ class CyberShieldApp(MDApp):
         self.theme_cls.primary_palette = "Purple"
         self.screen = Builder.load_file("main.kv")
         return self.screen
-    
+
     """
     Functions for settings
     """
+
     def theme_select(self):
         self.theme_cls.theme_style = (
             "Dark" if self.theme_cls.theme_style == "Light" else "Light"
         )
+
     def on_save(self, instance, value, date_range):
         date_selection = self.root.ids.screen_manager.get_screen("settings")
         date_label = date_selection.date_label.text
@@ -45,11 +47,12 @@ class CyberShieldApp(MDApp):
     """
     Functions for password manager
     """
+
     def encrypt(self):
         f = open("password_file.csv")
         for row in csv.reader(f):
             print(row[2])
-    
+
     def login_data(self):
         login = self.root.ids.screen_manager.get_screen("passwordmanager")
         website = login.website.text
