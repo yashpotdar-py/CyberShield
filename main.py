@@ -17,6 +17,9 @@ class CyberShieldApp(MDApp):
         self.screen = Builder.load_file("main.kv")
         return self.screen
     
+    def encrypt(self):
+        pass
+    
     def theme_select(self):
         self.theme_cls.theme_style = (
             "Dark" if self.theme_cls.theme_style == "Light" else "Light"

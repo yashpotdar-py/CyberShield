@@ -92,14 +92,6 @@ MDScreen:
                                         md_bg_color: app.theme_cls.bg_normal
                                         on_release:
                                             app.show_date_picker()
-                                    MDFlatButton:
-                                        text: "Encrypt Passwords"
-                                        halign: 'center'
-                                        pos_hint: {"center_x":.5, "center_y":.9}
-                                    MDSwitch:
-                                        id: encrypt_password
-                                        active: False
-                                        pos_hint: {"center_x":.5, "center_y":.9}
                             Screen:
                                 id: antivirus
                                 name: "antivirus"
@@ -122,7 +114,7 @@ MDScreen:
                                     spacing: 10
                                     padding: 10
                                     MDGridLayout:
-                                        rows:3
+                                        rows:4
                                         cols:2
                                         MDTextField:
                                             id: website
@@ -160,6 +152,13 @@ MDScreen:
                                                 self.icon = "eye" if self.icon == "eye-off" else "eye-off"
                                                 passwords.password = False if passwords.password is True \
                                                 else True
+                                    MDRectangleFlatButton:
+                                        id: encrypt
+                                        text: "Encrypt Password?"
+                                        size_hint: 1, None
+                                        pos_hint_y: .5
+                                        on_release:
+                                            app.encrypt()
                                     MDFillRoundFlatButton:
                                         id: submit
                                         text:"Submit"
@@ -167,9 +166,6 @@ MDScreen:
                                         pos_hint_y: .5
                                         on_release:
                                             app.login_data()
-
-
-
                             Screen:
                                 id: vpn
                                 name: "vpn"
