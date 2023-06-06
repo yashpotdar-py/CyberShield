@@ -1,6 +1,9 @@
 import os
+
 import csv
 import rsa
+import glob
+import hashlib
 from kivymd.app import MDApp
 from kivy.lang import Builder
 from kivy.properties import ObjectProperty
@@ -49,13 +52,23 @@ class CyberShieldApp(MDApp):
     """
     Functions for AntiVirus
     """
-
     def scan_files(self):
-        path = "C:/Users/Yogesh P/Desktop"
-        for root, d_names, f_names in os.walk(path):
-            #print(root)
-            #print(d_names)
-            print(f_names)
+        folder_path = "C:\\Users\\Yogesh P\\Desktop\\CyberShield\\"
+        directory_list = list()
+
+        # for deep scanning
+        for (dir_path, dir_name, file_name) in os.walk(folder_path):
+            directory_list += [os.path.join(dir_path, file) for file in file_name]
+        #print(directory_list)
+
+        for file_name in directory_list:
+            #print(file_name)
+            with open(file_name, 'rb') as f:
+                bytes = f.read()
+                readable_hash = hashlib.sha256(bytes).hexdigest()
+                print(f"{file_name}: {readable_hash}")
+
+
     """
     Functions for password manager
     """
