@@ -1,3 +1,4 @@
+import csv
 from kivymd.app import MDApp
 from kivy.lang import Builder
 from kivy.properties import ObjectProperty
@@ -17,9 +18,9 @@ class CyberShieldApp(MDApp):
         self.screen = Builder.load_file("main.kv")
         return self.screen
     
-    def encrypt(self):
-        pass
-    
+    """
+    Functions for settings
+    """
     def theme_select(self):
         self.theme_cls.theme_style = (
             "Dark" if self.theme_cls.theme_style == "Light" else "Light"
@@ -41,14 +42,22 @@ class CyberShieldApp(MDApp):
         date_dialog.bind(on_save=self.on_save, on_cancel=self.on_cancel)
         date_dialog.open()
 
+    """
+    Functions for password manager
+    """
+    def encrypt(self):
+        f = open("password_file.csv")
+        for row in csv.reader(f):
+            print(row[2])
+    
     def login_data(self):
         login = self.root.ids.screen_manager.get_screen("passwordmanager")
         website = login.website.text
         username = login.username.text
         password = login.passwords.text
-        data = f"{website};{username};{password}\n"
+        data = f"{website},{username},{password}\n"
         print(data)
-        file = open('password_file.txt', '+a')
+        file = open('password_file.csv', '+a')
         file.write(data)
         file.close()
 
