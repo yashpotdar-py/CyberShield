@@ -1,4 +1,5 @@
 import csv
+import rsa
 from kivymd.app import MDApp
 from kivy.lang import Builder
 from kivy.properties import ObjectProperty
@@ -49,9 +50,25 @@ class CyberShieldApp(MDApp):
     """
 
     def encrypt(self):
-        f = open("password_file.csv")
-        for row in csv.reader(f):
-            print(row[2])
+        public_key, private_key = rsa.newkeys(512)
+        file = open('password_file.csv')
+        passwords = [row[2] for row in csv.reader(file)]
+        encoded_pass= []
+        decoded_pass = []
+        print(passwords)
+        for password in passwords:
+            encoded = rsa.encrypt(password.encode(), public_key)
+            print(encoded)
+            encoded_pass.append(encoded)
+            #file.write(f",{encode}")
+        file.close()
+
+        for string in encoded_pass:
+            decoded = rsa.decrypt(string, private_key).decode()
+            print(decoded)
+            decoded_pass.append(string)
+        print(encoded_pass)
+        print(decoded_pass)
 
     def login_data(self):
         login = self.root.ids.screen_manager.get_screen("passwordmanager")
