@@ -35,11 +35,6 @@ MDScreen:
                                 on_release:
                                     screen_manager.current = "passwordmanager"
                             MDNavigationRailItem:
-                                text: "VPN"
-                                icon: "vpn"
-                                on_release:
-                                    screen_manager.current = "vpn"
-                            MDNavigationRailItem:
                                 text: "Settings"
                                 icon: "cog"
                                 on_release:
@@ -51,7 +46,6 @@ MDScreen:
                             settings: settings
                             antivirus: antivirus
                             passwordmanager: passwordmanager
-                            vpn: vpn
 
                             Screen:
                                 id: main_window
@@ -166,12 +160,6 @@ MDScreen:
                                         pos_hint_y: .5
                                         on_release:
                                             app.login_data()
-                            Screen:
-                                id: vpn
-                                name: "vpn"
-                                MDLabel:
-                                    text:"VPN"
-                                    halign:"center"
 
     MDNavigationDrawer:
         id: nav_drawer
@@ -212,12 +200,6 @@ MDScreen:
                 icon: "key"
                 on_release:
                     screen_manager.current = "passwordmanager"
-
-            MDNavigationDrawerItem:
-                text: "VPN"
-                icon: "vpn"
-                on_release:
-                    screen_manager.current = "vpn"
 
             MDNavigationDrawerItem:
                 text: "Settings"
