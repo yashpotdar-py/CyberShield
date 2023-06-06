@@ -1,3 +1,4 @@
+import os
 import csv
 import rsa
 from kivymd.app import MDApp
@@ -45,6 +46,16 @@ class CyberShieldApp(MDApp):
         date_dialog.bind(on_save=self.on_save, on_cancel=self.on_cancel)
         date_dialog.open()
 
+    """
+    Functions for AntiVirus
+    """
+
+    def scan_files(self):
+        path = "C:/Users/Yogesh P/Desktop"
+        for root, d_names, f_names in os.walk(path):
+            #print(root)
+            #print(d_names)
+            print(f_names)
     """
     Functions for password manager
     """

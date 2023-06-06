@@ -13,6 +13,7 @@ MDScreen:
                             adaptive_height: True
                             pos_hint: {"center_y": .5}
                             font_style: "H5"
+                            md_bg_color: app.theme_cls.bg_light
                     MDBoxLayout:
                         MDNavigationRail:
                             id: navigation_rail
@@ -89,9 +90,15 @@ MDScreen:
                             Screen:
                                 id: antivirus
                                 name: "antivirus"
-                                MDLabel:
-                                    text:"Antivirus"
-                                    halign:"center"
+                                MDCard:
+                                    orientation: 'horizontal'
+                                    rows:2
+                                    cols:2
+                                    MDFillRoundFlatButton:
+                                        id: scan_file
+                                        text: "Scan Files"
+                                        on_release:
+                                            app.scan_files()
 
                             Screen:
                                 id: passwordmanager
