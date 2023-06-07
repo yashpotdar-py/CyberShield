@@ -58,25 +58,7 @@ class CyberShieldApp(MDApp):
     """
 
     def encrypt(self):
-        public_key, private_key = rsa.newkeys(512)
-        file = open('password_file.csv')
-        passwords = [row[2] for row in csv.reader(file)]
-        encoded_pass = []
-        decoded_pass = []
-        print(passwords)
-        for password in passwords:
-            encoded = rsa.encrypt(password.encode(), public_key)
-            print(encoded)
-            encoded_pass.append(encoded)
-            # file.write(f",{encode}")
-        file.close()
-
-        for string in encoded_pass:
-            decoded = rsa.decrypt(string, private_key).decode()
-            print(decoded)
-            decoded_pass.append(string)
-        print(encoded_pass)
-        print(decoded_pass)
+        pass
 
     def login_data(self):
         login = self.root.ids.screen_manager.get_screen("passwordmanager")
