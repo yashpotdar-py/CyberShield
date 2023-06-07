@@ -1,7 +1,6 @@
-import os
 import csv
 import rsa
-import hashlib
+import antivirus
 from kivymd.app import MDApp
 from kivy.lang import Builder
 from kivy.properties import ObjectProperty
@@ -52,8 +51,8 @@ class CyberShieldApp(MDApp):
     """
 
     def scan_files(self):
-        pass
-    
+        antivirus.folder_scanner("C:\\Users\\Yogesh P\\Desktop\\CyberShield\\")
+
     """
     Functions for password manager
     """
