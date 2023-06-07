@@ -54,6 +54,8 @@ class CyberShieldApp(MDApp):
     def scan_files(self):
         folder_path = "C:\\Users\\Yogesh P\\Desktop\\CyberShield\\"
         directory_list = list()
+        malware_hash = list(open('malware_hashes.txt', 'r').read().split("\n"))
+        print(malware_hash)
 
         # for deep scanning
         for (dir_path, dir_name, file_name) in os.walk(folder_path):
