@@ -36,6 +36,11 @@ MDScreen:
                                 on_release:
                                     screen_manager.current = "passwordmanager"
                             MDNavigationRailItem:
+                                text: "AI"
+                                icon: "robot-confused"
+                                on_release:
+                                    screen_manager.current = "ai"
+                            MDNavigationRailItem:
                                 text: "Settings"
                                 icon: "cog"
                                 on_release:
@@ -167,6 +172,12 @@ MDScreen:
                                         pos_hint_y: .5
                                         on_release:
                                             app.login_data()
+                            Screen:
+                                id: ai
+                                name: "ai"
+                                MDLabel:
+                                    text: "Hello"
+                                    halign: "center"
 
     MDNavigationDrawer:
         id: nav_drawer
@@ -207,6 +218,12 @@ MDScreen:
                 icon: "key"
                 on_release:
                     screen_manager.current = "passwordmanager"
+            
+            MDNavigationDrawerItem:
+                text: "AI"
+                icon: "robot-confused"
+                on_release:
+                    screen_manager.current = "ai"
 
             MDNavigationDrawerItem:
                 text: "Settings"
