@@ -52,24 +52,8 @@ class CyberShieldApp(MDApp):
     """
 
     def scan_files(self):
-        folder_path = "C:\\Users\\Yogesh P\\Desktop\\CyberShield\\"
-        directory_list = list()
-        malware_hash = list(open('malware_hashes.txt', 'r').read().split("\n"))
-        print(malware_hash)
-
-        # for deep scanning
-        for (dir_path, dir_name, file_name) in os.walk(folder_path):
-            directory_list += [os.path.join(dir_path, file)
-                               for file in file_name]
-        # print(directory_list)
-
-        for file_name in directory_list:
-            # print(file_name)
-            with open(file_name, 'rb') as f:
-                bytes = f.read()
-                readable_hash = hashlib.sha256(bytes).hexdigest()
-                print(f"{file_name}: {readable_hash}")
-
+        pass
+    
     """
     Functions for password manager
     """
