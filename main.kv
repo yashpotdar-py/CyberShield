@@ -100,9 +100,16 @@ MDScreen:
                                     padding: 20
                                     spacing: 20
                                     MDProgressBar:
-                                        value: 50
+                                        id: progress_bar
                                         size_hint: 1,0
                                         pos_hint: {"center_x":.5, "center_y":.5}
+                                        value: 0
+                                    MDRectangleFlatButton:
+                                        text: "ProgressBar"
+                                        pos_hint: {"center_x":.5, "center_y":.5}
+                                        size_hint: 1, None
+                                        on_release:
+                                            app.progress_bar()
                                     MDFillRoundFlatButton:
                                         id: scan_file
                                         text: "Scan Files"

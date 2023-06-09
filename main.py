@@ -1,8 +1,10 @@
+import time
 import antivirus
 from kivymd.app import MDApp
+from kivy.clock import Clock
 from kivy.lang import Builder
-from kivy.properties import ObjectProperty
 from kivy.config import Config
+from kivy.properties import ObjectProperty
 from kivymd.uix.pickers import MDDatePicker
 from kivy.uix.floatlayout import FloatLayout
 Config.set('input', 'mouse', 'mouse,multitouch_on_demand')
@@ -48,9 +50,20 @@ class CyberShieldApp(MDApp):
     """
     Functions for AntiVirus
     """
-
     def scan_files(self):
         antivirus.folder_scanner("C:\\Users\\Yogesh P\\Desktop\\CyberShield\\")
+
+    def progress_bar(self, *args):
+        value = self.root.ids.progress_bar.value
+        Clock.schedule_interval(self.progress_bar, 0.5)
+        try:
+            value += 10
+            self.root.ids.progress_bar.value = value
+        except:
+            Clock.unschedule(self.progress_bar)
+        
+        
+            
 
     """
     Functions for password manager
