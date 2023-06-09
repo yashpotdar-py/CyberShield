@@ -50,12 +50,13 @@ class CyberShieldApp(MDApp):
     """
     Functions for AntiVirus
     """
+
     def scan_files(self):
         antivirus.folder_scanner("C:\\Users\\Yogesh P\\Desktop\\CyberShield\\")
 
     def progress_bar(self, *args):
-        #value = 0
-        #self.root.ids.progress_bar.value = 0
+        # value = 0
+        # self.root.ids.progress_bar.value = 0
         value = self.root.ids.progress_bar.value
         Clock.schedule_interval(self.progress_bar, 0.25)
         try:
@@ -63,9 +64,6 @@ class CyberShieldApp(MDApp):
             self.root.ids.progress_bar.value = value
         except:
             Clock.unschedule(self.progress_bar)
-        
-        
-            
 
     """
     Functions for password manager
