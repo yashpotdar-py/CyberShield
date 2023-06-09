@@ -54,10 +54,12 @@ class CyberShieldApp(MDApp):
         antivirus.folder_scanner("C:\\Users\\Yogesh P\\Desktop\\CyberShield\\")
 
     def progress_bar(self, *args):
+        #value = 0
+        #self.root.ids.progress_bar.value = 0
         value = self.root.ids.progress_bar.value
-        Clock.schedule_interval(self.progress_bar, 0.5)
+        Clock.schedule_interval(self.progress_bar, 0.25)
         try:
-            value += 10
+            value += 0.5
             self.root.ids.progress_bar.value = value
         except:
             Clock.unschedule(self.progress_bar)
