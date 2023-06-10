@@ -1,5 +1,5 @@
-import time
 import antivirus
+import encrypt_password
 from kivymd.app import MDApp
 from kivy.clock import Clock
 from kivy.lang import Builder
@@ -70,7 +70,11 @@ class CyberShieldApp(MDApp):
     """
 
     def encrypt(self):
-        pass
+        encrypt_password.Encrypt_Password.encrypt()
+
+    def decrypt(self):
+        encrypt_password.Encrypt_Password.decrypt()
+        
 
     def login_data(self):
         login = self.root.ids.screen_manager.get_screen("passwordmanager")
@@ -82,10 +86,6 @@ class CyberShieldApp(MDApp):
         file = open('password_file.csv', '+a')
         file.write(data)
         file.close()
-
-    def label(self, data):
-        x = CyberShieldApp.login_data()
-        return x
 
 
 if __name__ == "__main__":
