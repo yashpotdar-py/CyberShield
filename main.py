@@ -17,7 +17,8 @@ class CyberShieldApp(MDApp):
         self.theme_cls.material_style = "M3"
         self.theme_cls.theme_style_switch_animation = True
         self.theme_cls.theme_style = "Light"
-        self.theme_cls.primary_palette = "Purple"
+        self.theme_cls.primary_palette = "Orange"
+        self.theme_cls.accent_palette = "Amber"
         self.screen = Builder.load_file("main.kv")
         return self.screen
 
