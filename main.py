@@ -19,7 +19,8 @@ class CyberShieldApp(MDApp):
         self.theme_cls.theme_style = "Light"
         self.theme_cls.primary_palette = "Orange"
         self.theme_cls.accent_palette = "Amber"
-        self.screen = Builder.load_file("main.kv")
+        self.textcolor = (0, 0, 0, 1)
+        self.screen = Builder.load_file("main.kv") 
         return self.screen
 
     """
@@ -29,6 +30,10 @@ class CyberShieldApp(MDApp):
     def theme_select(self):
         self.theme_cls.theme_style = (
             "Dark" if self.theme_cls.theme_style == "Light" else "Light"
+        )
+        print(self.textcolor)
+        self.textcolor = (
+            (1, 1, 1, 1) if self.textcolor == (0, 0, 0, 1) else (0, 0, 0, 1)
         )
 
     def on_save(self, instance, value, date_range):

@@ -14,8 +14,6 @@ MDScreen:
                             adaptive_height: True
                             pos_hint: {"center_y": .5}
                             font_style: "H5"
-                            theme_text_color: "Custom"
-                            text_color: 0,0,0,1
                     MDBoxLayout:
                         MDNavigationRail:
                             id: navigation_rail
@@ -26,49 +24,37 @@ MDScreen:
                                 text: "Home"
                                 icon: "home"
                                 on_release:
-                                    screen_manager.current = "home"
-                                theme_text_color: "Custom"
-                                text_color: 0,0,0,1
+                                    screen_manager.current = "login"
                             MDNavigationRailItem:
                                 text: "Antivirus"
                                 icon: "shield-bug"
                                 on_release:
                                     screen_manager.current = "antivirus"
-                                theme_text_color: "Custom"
-                                text_color: 0,0,0,1
                             MDNavigationRailItem:
                                 text: "Passwords"
                                 icon: "key"
                                 on_release:
                                     screen_manager.current = "passwordmanager"
-                                theme_text_color: "Custom"
-                                text_color: 0,0,0,1
                             MDNavigationRailItem:
                                 text: "AI"
                                 icon: "robot-confused"
                                 on_release:
                                     screen_manager.current = "ai"
-                                theme_text_color: "Custom"
-                                text_color: 0,0,0,1
                             MDNavigationRailItem:
                                 text: "Settings"
                                 icon: "cog"
                                 on_release:
                                     screen_manager.current = "settings"
-                                theme_text_color: "Custom"
-                                text_color: 0,0,0,1
-
                         ScreenManager:
                             id: screen_manager
-                            main_window: main_window
-                            home: home
+                            login: login
                             settings: settings
                             antivirus: antivirus
                             passwordmanager: passwordmanager
                             Screen:
-                                id: main_window
-                                name: "main_window"
-                                md_bg_color: 
+                                id: login
+                                name: "login"
+                                md_bg_color: app.theme_cls.bg_light
                                 MDCard:
                                     size_hint: None, None
                                     size: 300,400
@@ -77,66 +63,46 @@ MDScreen:
                                     padding: 25
                                     spacing:25
                                     orientation: 'vertical'
-                                    MDLabel:
-                                        id: welcome
-                                        text: "Welcome!"
-                                        font_size: 40
-                                        halign: "center"
-                                        size_hint_y: None
-                                        height: self.texture_size[1]
-                                        padding_y: 15
+                                    md_bg_color: app.theme_cls.bg_light
                                     MDTextField:
                                         id: user
                                         hint_text: "Username"
-                                        icon_right: "account"
-                                        size_hint_x: None
-                                        width: 200
+                                        icon_left: "account"
                                         font_size: 18
                                         pos_hint: {"center_x":.5, "center_y":.5}
+                                        multiline: False
                                     MDTextField:
                                         id: pin
                                         hint_text: "Password"
-                                        icon_right: "eye-off"
-                                        size_hint_x: None
-                                        width: 200
+                                        icon_left: "key-variant"
                                         font_size: 18
                                         pos_hint: {"center_x":.5, "center_y":.5}
                                         password: True
+                                        multiline: False
+                                    MDRectangleFlatButton:
+                                        id: show_password
+                                        pos_hint: {"center_x":.5,"center_y":.5}
+                                        size_hint: 1, None
+                                        text:"Show Password"
+                                        on_release:
+                                            pin.password = False if pin.password is True else True
                                     MDFillRoundFlatButton:
-                                        id: login
+                                        id: login_button
                                         text:"Login"
                                         font_size: 12
                                         pos_hint: {"center_x":.5, "center_y":.5}
                                         size_hint: 1, None
                                         on_release:
-                                            root.screen_manager.current = "home"
+                                            screen_manager.current = "settings"
                                     MDFillRoundFlatButton:
                                         id: clear
                                         text:"Clear"
                                         font_size: 12
                                         pos_hint: {"center_x":.5, "center_y":.5}
                                         size_hint: 1, None
-                            Screen:
-                                id: home
-                                name: "home"
-                                MDGridLayout:
-                                    rows: 2
-                                    cols: 2
-                                    padding: 10
-                                    spacing: 10
-                                    MDLabel:
-                                        text: "Label 1"
-                                        halign: "center"
-                                    MDLabel:
-                                        text: "Label 2"
-                                        halign: "center"
-                                    MDLabel:
-                                        text: "Label 3"
-                                        halign: "center"
-                                    MDLabel:
-                                        text: "Label 4"
-                                        halign: "center"
-
+                                        on_release:
+                                            user.text = ""
+                                            pin.text = ""
                             Screen:
                                 id: settings
                                 name: "settings"
@@ -176,6 +142,7 @@ MDScreen:
                                     orientation: "vertical"
                                     padding: 20
                                     spacing: 20
+                                    md_bg_color: app.theme_cls.bg_light
                                     MDProgressBar:
                                         id: progress_bar
                                         size_hint: 1,0
@@ -189,7 +156,6 @@ MDScreen:
                                         on_release:
                                             app.scan_files()
                                             app.progress_bar()
-
                             Screen:
                                 id: passwordmanager
                                 name: "passwordmanager"
@@ -224,7 +190,7 @@ MDScreen:
                                             icon_left: "account-circle-outline"
                                         MDIconButton:
                                             id:pencil
-                                            icon:"account"
+                                            icon:"pencil"
                                             theme_text_color:"Hint"
                                         MDTextField:
                                             id: passwords
@@ -263,15 +229,12 @@ MDScreen:
                                 MDLabel:
                                     text: "Hello"
                                     halign: "center"
-
     MDNavigationDrawer:
         id: nav_drawer
         radius: 0, 16, 16, 0
         elevation: 2
         width: "240dp"
-
         MDNavigationDrawerMenu:
-
             MDBoxLayout:
                 orientation: "vertical"
                 adaptive_height: True
@@ -290,38 +253,25 @@ MDScreen:
                 text: "Home"
                 icon: "home"
                 on_release:
-                    screen_manager.current = "home"
-                theme_text_color: "Custom"
-                text_color: 0,0,0,1
+                    screen_manager.current = "login"
 
             MDNavigationDrawerItem:
                 text: "Antivirus"
                 icon: "shield-bug"
                 on_release:
                     screen_manager.current = "antivirus"
-                theme_text_color: "Custom"
-                text_color: 0,0,0,1
-
             MDNavigationDrawerItem:
                 text: "Passwords"
                 icon: "key"
                 on_release:
                     screen_manager.current = "passwordmanager"
-                theme_text_color: "Custom"
-                text_color: 0,0,0,1
-
             MDNavigationDrawerItem:
                 text: "AI"
                 icon: "robot-confused"
                 on_release:
                     screen_manager.current = "ai"
-                theme_text_color: "Custom"
-                text_color: 0,0,0,1
-
             MDNavigationDrawerItem:
                 text: "Settings"
                 icon: "cog"
                 on_release:
                     screen_manager.current = "settings"
-                theme_text_color: "Custom"
-                text_color: 0,0,0,1
