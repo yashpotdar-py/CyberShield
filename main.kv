@@ -9,11 +9,19 @@ MDScreen:
                         adaptive_height: True
                         padding: "12dp"
                         md_bg_color: app.theme_cls.bg_light
+                        MDSmartTile:
+                            radius: 24
+                            box_color: 0,0,0,0
+                            source: 'app-logo.png'
+                            size_hint: None, None
+                            size: "50dp", "50dp"
+                            adaptive_size: True
                         MDLabel:
-                            text: "CyberShield"
+                            text: " MyApp"
                             adaptive_height: True
                             pos_hint: {"center_y": .5}
-                            font_style: "H5"
+                            font_style: "H4"
+                            theme_text_color: 'Custom'
                     MDBoxLayout:
                         MDNavigationRail:
                             id: navigation_rail

@@ -10,16 +10,16 @@ from kivy.uix.floatlayout import FloatLayout
 Config.set('input', 'mouse', 'mouse,multitouch_on_demand')
 
 
-class CyberShieldApp(MDApp):
+class MyAppApp(MDApp):
     screen_manager = ObjectProperty(None)
 
     def build(self):
+        self.icon = 'app-logo.png'
         self.theme_cls.material_style = "M3"
         self.theme_cls.theme_style_switch_animation = True
         self.theme_cls.theme_style = "Light"
         self.theme_cls.primary_palette = "Orange"
         self.theme_cls.accent_palette = "Amber"
-        self.textcolor = (0, 0, 0, 1)
         self.screen = Builder.load_file("main.kv") 
         return self.screen
 
@@ -31,11 +31,6 @@ class CyberShieldApp(MDApp):
         self.theme_cls.theme_style = (
             "Dark" if self.theme_cls.theme_style == "Light" else "Light"
         )
-        print(self.textcolor)
-        self.textcolor = (
-            (1, 1, 1, 1) if self.textcolor == (0, 0, 0, 1) else (0, 0, 0, 1)
-        )
-
     def on_save(self, instance, value, date_range):
         date_selection = self.root.ids.screen_manager.get_screen("settings")
         date_label = date_selection.date_label.text
@@ -95,5 +90,5 @@ class CyberShieldApp(MDApp):
 
 
 if __name__ == "__main__":
-    app = CyberShieldApp()
+    app = MyAppApp()
     app.run()
